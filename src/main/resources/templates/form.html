@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>個人情報入力フォーム</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h2>個人情報入力</h2>
+
+<div th:if="${message}" class="success">
+    <p th:text="${message}"></p>
+</div>
+
+<form th:action="@{/form}" th:object="${personalInfo}" method="post">
+    <div>
+        <label>名前:</label>
+        <input type="text" th:field="*{name}" />
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
+    </div>
+    <div>
+        <label>生年月日:</label>
+        <input type="date" th:field="*{birthDate}" />
+        <div th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}" class="error"></div>
+    </div>
+    <div>
+        <label>マイナンバー:</label>
+        <input type="text" th:field="*{myNumber}" maxlength="12"/>
+        <div th:if="${#fields.hasErrors('myNumber')}" th:errors="*{myNumber}" class="error"></div>
+    </div>
+    <div>
+        <button type="submit">送信</button>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登録情報一覧</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h2>登録情報一覧</h2>
+
+
+<form method="get" th:action="@{/list}">
+    <input type="text" name="keyword" placeholder="名前で検索" th:value="${keyword}">
+    <button type="submit">検索</button>
+</form>
+
+<div class="table-container">
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>生年月日</th>
+        <th>マイナンバー</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="info : ${list}">
+        <td th:text="${info.id}"></td>
+        <td th:text="${info.name}"></td>
+        <td th:text="${info.birthDate}"></td>
+        <td th:text="${info.myNumber}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+</div>
+</body>
+</html>

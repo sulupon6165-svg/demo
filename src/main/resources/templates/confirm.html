@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>入力内容確認</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h2>入力内容確認</h2>
+
+<div class="confirm-box">
+    <form th:action="@{/form/confirm}" th:object="${personalInfo}" method="post">
+        <div>
+            <label>名前:</label>
+            <span th:text="*{name}"></span>
+        </div>
+        <div>
+            <label>生年月日:</label>
+            <span th:text="*{birthDate}"></span>
+        </div>
+        <div>
+            <label>マイナンバー:</label>
+            <span th:text="*{myNumber}"></span>
+        </div>
+		
+		<input type="hidden" name="name" th:value="${personalInfo.name}">
+		   <input type="hidden" name="birthDate" th:value="${personalInfo.birthDate}">
+		   <input type="hidden" name="myNumber" th:value="${personalInfo.myNumber}">
+
+
+        <div class="confirm-buttons">
+            <button type="submit">確定</button>
+			<br>
+            <a th:href="@{/}"><button type="button">戻る</button></a>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
